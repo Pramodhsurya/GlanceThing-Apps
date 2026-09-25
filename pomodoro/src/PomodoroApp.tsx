@@ -1,3 +1,7 @@
+// Timer taken from grahamplace/pomodoro-thing
+// https://github.com/grahamplace/pomodoro-thing
+// Original app by grahamplace. Adapted for GlanceThing.
+
 import { useEffect, useState } from 'react'
 
 import { useApps } from '@/contexts/AppsContext.tsx'
@@ -279,6 +283,10 @@ const PomodoroApp: React.FC = () => {
               <span />
             </button>
           </div>
+          <p className={styles.credit}>
+            Timer from grahamplace/pomodoro-thing. Original contribution by
+            grahamplace.
+          </p>
         </div>
       ) : (
         <div className={styles.body}>
@@ -354,6 +362,9 @@ const PomodoroApp: React.FC = () => {
               <span className="material-icons">restart_alt</span>
               Reset all
             </button>
+            <p className={styles.credit}>
+              Timer from grahamplace/pomodoro-thing
+            </p>
           </div>
         </div>
       )}

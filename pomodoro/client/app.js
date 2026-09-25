@@ -1,3 +1,4 @@
+/* Timer from grahamplace/pomodoro-thing — https://github.com/grahamplace/pomodoro-thing */
 var DEFAULTS = { blocks: 4, focusMin: 25, shortMin: 5, longMin: 20, focusColor: '#f87171', breakColor: '#34d399', flash: true }
 var SWATCHES = ['#f87171', '#fb923c', '#facc15', '#34d399', '#22d3ee', '#818cf8', '#e879f9']
 var RING = 2 * Math.PI * 88
@@ -81,7 +82,7 @@ function render() {
       stepper('Long break (min)', 'longMin', settings.longMin, 1, 60, 5) +
       swatches('Focus colour', 'focusColor', settings.focusColor) +
       swatches('Break colour', 'breakColor', settings.breakColor) +
-      '<div class="row"><span>Flash screen when a phase ends</span><button type="button" class="toggle" data-on="' + settings.flash + '" data-act="flash"><span></span></button></div></div>'
+      '<div class="row"><span>Flash screen when a phase ends</span><button type="button" class="toggle" data-on="' + settings.flash + '" data-act="flash"><span></span></button></div><p class="credit">Timer from grahamplace/pomodoro-thing. Original contribution by grahamplace.</p></div>'
   } else {
     root.innerHTML = (flashKey ? '<div class="flash"></div>' : '') + header() +
       '<div class="body"><div class="ringWrap"><svg viewBox="0 0 200 200" class="ring"><circle cx="100" cy="100" r="88" class="track"/><circle cx="100" cy="100" r="88" class="fill" stroke-dasharray="' + RING + '" stroke-dashoffset="' + (RING * (1 - progress)) + '"/></svg>' +
@@ -91,7 +92,7 @@ function render() {
       '<button type="button" data-act="back"><span class="material-icons">skip_previous</span></button>' +
       '<button type="button" data-primary="true" data-act="toggle"><span class="material-icons">' + (timer.mode === 'done' ? 'replay' : timer.running ? 'pause' : 'play_arrow') + '</span></button>' +
       '<button type="button" data-act="skip"' + (timer.mode === 'done' ? ' disabled' : '') + '><span class="material-icons">skip_next</span></button></div>' +
-      '<button type="button" class="reset" data-act="reset"><span class="material-icons">restart_alt</span> Reset all</button></div></div>'
+      '<button type="button" class="reset" data-act="reset"><span class="material-icons">restart_alt</span> Reset all</button><p class="credit">Timer from grahamplace/pomodoro-thing</p></div></div>'
   }
   function header() {
     return '<div class="header"><div class="title">Pomodoro</div><button type="button" class="iconBtn" data-act="settings" data-active="' + showSettings + '"><span class="material-icons">' + (showSettings ? 'close' : 'tune') + '</span></button></div>'

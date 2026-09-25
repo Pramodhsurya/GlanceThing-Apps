@@ -11,16 +11,16 @@ Inspired by [ItsRiprod/Deskthing-Apps](https://github.com/ItsRiprod/Deskthing-Ap
 
 ## Apps
 
-| Folder       | App             | Notes                                      |
-| ------------ | --------------- | ------------------------------------------ |
-| `music`      | Music           | Built into GlanceThing                     |
-| `pomodoro`   | Pomodoro        | Built into GlanceThing                     |
-| `system`     | Resource Usage  | Built into GlanceThing                     |
-| `recorder`   | Recording Notes | Built into GlanceThing                     |
-| `github`     | GitHub          | Built into GlanceThing                     |
-| `logs`       | Console Logs    | Built into GlanceThing                     |
-| `link`       | Link            | Built into GlanceThing                     |
-| `exampleapp` | Example App     | Installable template for new community apps |
+| Folder       | App             | Notes                                       | Original repo                                                                                         |
+| ------------ | --------------- | ------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `music`      | Music           | Built into GlanceThing                      | [DeskThing-GMP](https://github.com/RandomDebugGuy/DeskThing-GMP), [Local Audio](https://github.com/ItsRiprod/Deskthing-Apps/tree/main/audio) |
+| `pomodoro`   | Pomodoro        | Built into GlanceThing; timer taken directly | [pomodoro-thing](https://github.com/grahamplace/pomodoro-thing) by [grahamplace](https://github.com/grahamplace) |
+| `system`     | Resource Usage  | Built into GlanceThing                      | [System](https://github.com/ItsRiprod/Deskthing-Apps/tree/main/system)                                |
+| `recorder`   | Recording Notes | Built into GlanceThing                      | [Recording Notes](https://github.com/ItsRiprod/Deskthing-Apps/tree/main/recorder)                     |
+| `github`     | GitHub          | Built into GlanceThing                      | [DeskThing-GitHub](https://github.com/dakota-kallas/DeskThing-GitHub)                                 |
+| `logs`       | Console Logs    | Built into GlanceThing                      | [Console Logs](https://github.com/ItsRiprod/Deskthing-Apps/tree/main/logs)                            |
+| `link`       | Link            | Built into GlanceThing                      | [Link](https://github.com/ItsRiprod/Deskthing-Apps/tree/main/link)                                    |
+| `exampleapp` | Example App     | Installable template for new community apps | —                                                                                                     |
 
 Official apps with those ids also ship **built into GlanceThing**. Installing
 the zip from this repo will warn **Reserved App ID** so you cannot replace
@@ -77,5 +77,22 @@ Writes `dist/{id}-app-v{version}.zip` for each app folder that has a
 
 ## Credits
 
-These apps were written for GlanceThing. Several were inspired by DeskThing
-counterparts — see each app README. Do not copy DeskThing sources wholesale.
+This collection is modeled on [ItsRiprod/Deskthing-Apps](https://github.com/ItsRiprod/Deskthing-Apps).
+Most GlanceThing apps were written for this project after studying those
+apps. **Pomodoro is the exception:** its timer is taken directly from
+[grahamplace/pomodoro-thing](https://github.com/grahamplace/pomodoro-thing)
+(original contribution by [grahamplace](https://github.com/grahamplace)).
+
+| GlanceThing app | Original repo |
+| --- | --- |
+| Pomodoro (timer taken directly) | [pomodoro-thing](https://github.com/grahamplace/pomodoro-thing) by [grahamplace](https://github.com/grahamplace) |
+| Music: full controls | [DeskThing-GMP](https://github.com/RandomDebugGuy/DeskThing-GMP) |
+| Music: source picker | [Local Audio](https://github.com/ItsRiprod/Deskthing-Apps/tree/main/audio) |
+| Resource Usage | [System](https://github.com/ItsRiprod/Deskthing-Apps/tree/main/system) |
+| Recording Notes | [Recording Notes](https://github.com/ItsRiprod/Deskthing-Apps/tree/main/recorder) |
+| GitHub | [DeskThing-GitHub](https://github.com/dakota-kallas/DeskThing-GitHub) |
+| Console Logs | [Console Logs](https://github.com/ItsRiprod/Deskthing-Apps/tree/main/logs) |
+| Link | [Link](https://github.com/ItsRiprod/Deskthing-Apps/tree/main/link) |
+
+Do not copy DeskThing sources wholesale. If you add an app whose code comes
+from another repo, name that repo in the app README and in this table.

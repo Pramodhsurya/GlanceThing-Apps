@@ -13,7 +13,7 @@
 .shell::before {
   content: '';
   position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
+  inset: 0;
   background: radial-gradient(
     circle at 25% 55%,
     var(--accent),
@@ -33,7 +33,7 @@
 
 .flash {
   position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
+  inset: 0;
   background: var(--accent);
   pointer-events: none;
   z-index: 10;
@@ -56,7 +56,7 @@
 .header {
   display: flex;
   align-items: center;
-  /* gap replaced for Chrome 69 */ margin: 0; --gap: 10px;
+  gap: 10px;
   padding: 10px 14px 0;
 }
 
@@ -96,7 +96,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* gap replaced for Chrome 69 */ margin: 0; --gap: 48px;
+  gap: 48px;
   padding: 0 32px 16px;
 }
 
@@ -131,12 +131,12 @@
 
 .ringInner {
   position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
+  inset: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* gap replaced for Chrome 69 */ margin: 0; --gap: 4px;
+  gap: 4px;
 }
 
 .ringInner > span {
@@ -162,7 +162,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* gap replaced for Chrome 69 */ margin: 0; --gap: 18px;
+  gap: 18px;
   min-width: 260px;
 }
 
@@ -175,7 +175,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /* gap replaced for Chrome 69 */ margin: 0; --gap: 10px;
+  gap: 10px;
   max-width: 260px;
 }
 
@@ -215,7 +215,7 @@
 .controls {
   display: flex;
   align-items: center;
-  /* gap replaced for Chrome 69 */ margin: 0; --gap: 18px;
+  gap: 18px;
 }
 
 .controls button {
@@ -253,7 +253,7 @@
   all: unset;
   display: flex;
   align-items: center;
-  /* gap replaced for Chrome 69 */ margin: 0; --gap: 6px;
+  gap: 6px;
   padding: 8px 16px;
   border-radius: 999px;
   font-size: 13px;
@@ -266,6 +266,13 @@
   font-size: 18px;
 }
 
+.credit {
+  margin: 10px 0 0;
+  font-size: 11px;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.45);
+}
+
 .settings {
   flex: 1;
   min-height: 0;
@@ -273,14 +280,14 @@
   padding: 8px 28px 20px;
   display: flex;
   flex-direction: column;
-  /* gap replaced for Chrome 69 */ margin: 0; --gap: 4px;
+  gap: 4px;
 }
 
 .row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* gap replaced for Chrome 69 */ margin: 0; --gap: 16px;
+  gap: 16px;
   min-height: 50px;
   font-size: 16px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -289,7 +296,7 @@
 .stepper {
   display: flex;
   align-items: center;
-  /* gap replaced for Chrome 69 */ margin: 0; --gap: 10px;
+  gap: 10px;
 }
 
 .stepper button {
@@ -318,7 +325,7 @@
 
 .swatches {
   display: flex;
-  /* gap replaced for Chrome 69 */ margin: 0; --gap: 8px;
+  gap: 8px;
 }
 
 .swatches button {
