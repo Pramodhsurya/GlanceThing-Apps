@@ -1,0 +1,6 @@
+{
+  "name": "@glancething/recorder",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Record voice notes with the Car Thing's microphone."
+}

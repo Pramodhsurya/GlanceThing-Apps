@@ -1,0 +1,18 @@
+{
+  "id": "recorder",
+  "label": "Recording Notes",
+  "version": "1.0.0",
+  "author": "GlanceThing",
+  "description": "Record voice notes with the Car Thing's microphone.",
+  "repository": "https://github.com/Pramodhsurya/GlanceThing-Apps",
+  "icon": "mic",
+  "color": "#f43f5e",
+  "platforms": [
+    "mac",
+    "windows",
+    "linux"
+  ],
+  "requiredVersions": {
+    "server": "1.0.0"
+  }
+}

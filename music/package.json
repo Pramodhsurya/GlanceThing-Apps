@@ -1,0 +1,6 @@
+{
+  "name": "@glancething/music",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Now playing with seek, skip 10 seconds, shuffle, repeat and volume."
+}

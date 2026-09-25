@@ -1,0 +1,18 @@
+{
+  "id": "system",
+  "label": "Resource Usage",
+  "version": "1.0.0",
+  "author": "GlanceThing",
+  "description": "CPU, memory and uptime of this computer.",
+  "repository": "https://github.com/Pramodhsurya/GlanceThing-Apps",
+  "icon": "memory",
+  "color": "#10b981",
+  "platforms": [
+    "mac",
+    "windows",
+    "linux"
+  ],
+  "requiredVersions": {
+    "server": "1.0.0"
+  }
+}

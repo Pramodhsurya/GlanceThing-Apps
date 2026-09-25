@@ -1,0 +1,18 @@
+{
+  "id": "pomodoro",
+  "label": "Pomodoro",
+  "version": "1.0.0",
+  "author": "GlanceThing",
+  "description": "Focus timer with short and long breaks.",
+  "repository": "https://github.com/Pramodhsurya/GlanceThing-Apps",
+  "icon": "timer",
+  "color": "#ef4444",
+  "platforms": [
+    "mac",
+    "windows",
+    "linux"
+  ],
+  "requiredVersions": {
+    "server": "1.0.0"
+  }
+}

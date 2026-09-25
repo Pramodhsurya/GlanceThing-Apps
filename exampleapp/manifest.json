@@ -1,0 +1,18 @@
+{
+  "id": "exampleapp",
+  "label": "Example App",
+  "version": "1.0.0",
+  "author": "GlanceThing",
+  "description": "A template you can copy to make a new GlanceThing app.",
+  "repository": "https://github.com/Pramodhsurya/GlanceThing-Apps",
+  "icon": "widgets",
+  "color": "#f59e0b",
+  "platforms": [
+    "mac",
+    "windows",
+    "linux"
+  ],
+  "requiredVersions": {
+    "server": "1.0.0"
+  }
+}

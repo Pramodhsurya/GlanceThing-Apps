@@ -1,0 +1,46 @@
+.seek {
+  width: 100%;
+}
+
+.seekHit {
+  padding: 12px 0;
+  touch-action: none;
+}
+
+.seekTrack {
+  position: relative;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.seekFill {
+  height: 100%;
+  border-radius: 999px;
+}
+
+.seekKnob {
+  position: absolute;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border-radius: 50%;
+  transition: transform 120ms ease;
+}
+
+.seekKnob[data-dragging='true'] {
+  transform: scale(1.5);
+}
+
+.seek[data-enabled='false'] .seekFill {
+  opacity: 0.6;
+}
+
+.seekTimes {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  color: rgba(255, 255, 255, 0.6);
+}

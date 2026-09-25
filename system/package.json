@@ -1,0 +1,6 @@
+{
+  "name": "@glancething/system",
+  "private": true,
+  "version": "1.0.0",
+  "description": "CPU, memory and uptime of this computer."
+}
