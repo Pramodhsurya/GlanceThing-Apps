@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 
 import { MediaContext } from '@/contexts/MediaContext.tsx'
 import { useApps } from '@/contexts/AppsContext.tsx'
@@ -66,6 +66,14 @@ const MusicApp: React.FC = () => {
   const [info, setInfo] = useState<SourcesInfo | null>(null)
   const [switching, setSwitching] = useState<string | null>(null)
   const [picking, setPicking] = useState(false)
+  const [dialing, setDialing] = useState(false)
+  const [localVolume, setLocalVolume] = useState(50)
+  const volumeRef = useRef(50)
+  const lastDialAt = useRef(0)
+  const actionsRef = useRef(actions)
+  const pickingRef = useRef(picking)
+  actionsRef.current = actions
+  pickingRef.current = picking
 
   const { ready, socket } = useSocketMessage<SourcesInfo>(
     'playback',
@@ -94,10 +102,112 @@ const MusicApp: React.FC = () => {
   const can = (action: Action) =>
     !!playerData?.supportedActions.includes(action)
 
+  useEffect(() => {
+    if (typeof playerData?.volume === 'number') setLocalVolume(playerData.volume)
+  }, [playerData?.volume])
+
+  volumeRef.current = localVolume
+
+  function applyVolume(next: number) {
+    const volume = Math.max(0, Math.min(100, next))
+    volumeRef.current = volume
+    setLocalVolume(volume)
+    actions.setVolume(volume)
+  }
+
+  useEffect(() => {
+    function bump(delta: number) {
+      if (pickingRef.current) return
+      const now = Date.now()
+      if (now - lastDialAt.current < 40) return
+      lastDialAt.current = now
+      const next = Math.max(
+        0,
+        Math.min(100, volumeRef.current + delta * VOLUME_STEP)
+      )
+      if (next === volumeRef.current) return
+      volumeRef.current = next
+      actionsRef.current.setVolume(next)
+      setLocalVolume(next)
+      setDialing(true)
+    }
+
+    function onKey(e: KeyboardEvent) {
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+        e.preventDefault()
+        e.stopPropagation()
+        bump(-1)
+      } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+        e.preventDefault()
+        e.stopPropagation()
+        bump(1)
+      } else if (e.key === 'Enter') {
+        if (pickingRef.current) return
+        e.preventDefault()
+        e.stopPropagation()
+        actionsRef.current.playPause()
+      }
+    }
+
+    function onWheel(e: WheelEvent) {
+      const amount =
+        Math.abs(e.deltaX) >= Math.abs(e.deltaY) ? e.deltaX : e.deltaY
+      if (!amount) return
+      e.preventDefault()
+      e.stopPropagation()
+      bump(amount > 0 ? 1 : -1)
+    }
+
+    document.addEventListener('keydown', onKey, true)
+    document.addEventListener('wheel', onWheel, {
+      capture: true,
+      passive: false
+    })
+    return () => {
+      document.removeEventListener('keydown', onKey, true)
+      document.removeEventListener('wheel', onWheel, true)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!dialing) return
+    const id = window.setTimeout(() => setDialing(false), 800)
+    return () => window.clearTimeout(id)
+  }, [dialing, playerData?.volume])
+
   const current = playerData?.track.duration.current ?? 0
   const total = playerData?.track.duration.total ?? 0
-  const volume = playerData?.volume ?? 0
+  const volume = localVolume
   const source = sourceMeta(info?.current)
+
+  const volumeBar = (
+    <div
+      className={styles.volume}
+      data-enabled={playerData ? can('volume') : true}
+      data-dialing={dialing}
+    >
+      <button
+        type="button"
+        disabled={!!playerData && !can('volume')}
+        onClick={() => applyVolume(volume - VOLUME_STEP)}
+      >
+        <span className="material-icons">volume_down</span>
+      </button>
+      <div className={styles.volumeTrack}>
+        <div
+          className={styles.volumeFill}
+          style={{ width: `${volume}%` }}
+        />
+      </div>
+      <button
+        type="button"
+        disabled={!!playerData && !can('volume')}
+        onClick={() => applyVolume(volume + VOLUME_STEP)}
+      >
+        <span className="material-icons">volume_up</span>
+      </button>
+    </div>
+  )
 
   return (
     <div className={styles.shell}>
@@ -215,32 +325,7 @@ const MusicApp: React.FC = () => {
                 </span>
               </button>
 
-              <div className={styles.volume} data-enabled={can('volume')}>
-                <button
-                  type="button"
-                  disabled={!can('volume')}
-                  onClick={() =>
-                    actions.setVolume(Math.max(0, volume - VOLUME_STEP))
-                  }
-                >
-                  <span className="material-icons">volume_down</span>
-                </button>
-                <div className={styles.volumeTrack}>
-                  <div
-                    className={styles.volumeFill}
-                    style={{ width: `${volume}%` }}
-                  />
-                </div>
-                <button
-                  type="button"
-                  disabled={!can('volume')}
-                  onClick={() =>
-                    actions.setVolume(Math.min(100, volume + VOLUME_STEP))
-                  }
-                >
-                  <span className="material-icons">volume_up</span>
-                </button>
-              </div>
+              {volumeBar}
             </div>
           </div>
         </div>
@@ -260,6 +345,7 @@ const MusicApp: React.FC = () => {
           >
             Change source
           </button>
+          <div className={styles.emptyVolume}>{volumeBar}</div>
         </div>
       )}
 
