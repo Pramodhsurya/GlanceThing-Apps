@@ -13,19 +13,20 @@ Inspired by [ItsRiprod/Deskthing-Apps](https://github.com/ItsRiprod/Deskthing-Ap
 
 | Folder       | App             | Notes                                       | Original repo                                                                                         |
 | ------------ | --------------- | ------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `music`      | Music           | Built into GlanceThing                      | [DeskThing-GMP](https://github.com/RandomDebugGuy/DeskThing-GMP), [Local Audio](https://github.com/ItsRiprod/Deskthing-Apps/tree/main/audio) |
-| `pomodoro`   | Pomodoro        | Built into GlanceThing; timer taken directly | [pomodoro-thing](https://github.com/grahamplace/pomodoro-thing) by [grahamplace](https://github.com/grahamplace) |
-| `system`     | Resource Usage  | Built into GlanceThing                      | [System](https://github.com/ItsRiprod/Deskthing-Apps/tree/main/system)                                |
-| `recorder`   | Recording Notes | Built into GlanceThing                      | [Recording Notes](https://github.com/ItsRiprod/Deskthing-Apps/tree/main/recorder)                     |
-| `github`     | GitHub          | Built into GlanceThing                      | [DeskThing-GitHub](https://github.com/dakota-kallas/DeskThing-GitHub)                                 |
-| `logs`       | Console Logs    | Built into GlanceThing                      | [Console Logs](https://github.com/ItsRiprod/Deskthing-Apps/tree/main/logs)                            |
-| `link`       | Link            | Built into GlanceThing                      | [Link](https://github.com/ItsRiprod/Deskthing-Apps/tree/main/link)                                    |
+| `music`      | Music           | Install from the GlanceThing Store          | [DeskThing-GMP](https://github.com/RandomDebugGuy/DeskThing-GMP), [Local Audio](https://github.com/ItsRiprod/Deskthing-Apps/tree/main/audio) |
+| `pomodoro`   | Pomodoro        | Install from the Store; timer taken directly | [pomodoro-thing](https://github.com/grahamplace/pomodoro-thing) by [grahamplace](https://github.com/grahamplace) |
+| `system`     | Resource Usage  | Install from the Store                      | [System](https://github.com/ItsRiprod/Deskthing-Apps/tree/main/system)                                |
+| `recorder`   | Recording Notes | Install from the Store                      | [Recording Notes](https://github.com/ItsRiprod/Deskthing-Apps/tree/main/recorder)                     |
+| `github`     | GitHub          | Install from the Store                      | [DeskThing-GitHub](https://github.com/dakota-kallas/DeskThing-GitHub)                                 |
+| `logs`       | Console Logs    | Install from the Store                      | [Console Logs](https://github.com/ItsRiprod/Deskthing-Apps/tree/main/logs)                            |
+| `link`       | Link            | Install from the Store                      | [Link](https://github.com/ItsRiprod/Deskthing-Apps/tree/main/link)                                    |
+| `mic`        | Mic             | Install from the Store                      | —                                                                                                     |
 | `exampleapp` | Example App     | Installable template for new community apps | —                                                                                                     |
 
-Official apps with those ids also ship **built into GlanceThing**. Installing
-the zip from this repo will warn **Reserved App ID** so you cannot replace
-them. Use `exampleapp` (or a new folder with a new id) when you want something
-you can **Initialize** from **Apps → Add App**.
+None of these are preinstalled. GlanceThing asks which ones to install on
+first setup. After that, **Apps → Store** is Install / Uninstall. Use
+`exampleapp` (or a new folder with a new id) when you want something new
+from Git.
 
 ## Screenshots
 
@@ -45,18 +46,21 @@ you can **Initialize** from **Apps → Add App**.
 | --- | --- |
 | <img src=".github/assets/s10-github.png?v=1" width="400" /> | <img src=".github/assets/s10-logs.png?v=1" width="400" /> |
 
-| Link | &nbsp; |
+| Link | Mic |
 | --- | --- |
-| <img src=".github/assets/s10-link.png?v=1" width="400" /> | &nbsp; |
+| <img src=".github/assets/s10-link.png?v=1" width="400" /> | <img src=".github/assets/s10-mic.png?v=1" width="400" /> |
 
 ## Install from this repo
 
-1. Open GlanceThing → **Apps** → **Add App**.
-2. Paste `Pramodhsurya/GlanceThing-Apps`.
-3. GlanceThing lists every `*-app-*.zip` on the latest GitHub release.
-4. Download the app you want, acknowledge the warnings, then **Initialize App**.
+1. Open GlanceThing → **Apps** → **Store**. The store lists the apps in this
+   repo on its own.
+2. Click **Install**. GlanceThing shows the usual warnings.
+3. After you accept, it downloads from this repo and installs. No Git URL to
+   paste.
 
-Or use **Upload Local File** with a zip from `npm run package`.
+**From Git** is still there if you want to paste `Pramodhsurya/GlanceThing-Apps`
+or another `owner/repo`. You can also **Upload Local File** with a zip from
+`npm run package`.
 
 ## Make your own app
 
