@@ -1,0 +1,18 @@
+{
+  "id": "github",
+  "label": "GitHub",
+  "version": "1.0.0",
+  "author": "GlanceThing",
+  "description": "Your repos, stars, pull requests and issues.",
+  "repository": "https://github.com/Pramodhsurya/GlanceThing-Apps",
+  "icon": "code",
+  "color": "#238636",
+  "platforms": [
+    "mac",
+    "windows",
+    "linux"
+  ],
+  "requiredVersions": {
+    "server": "1.0.0"
+  }
+}

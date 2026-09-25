@@ -1,0 +1,6 @@
+{
+  "name": "@glancething/exampleapp",
+  "private": true,
+  "version": "1.0.0",
+  "description": "A template you can copy to make a new GlanceThing app."
+}

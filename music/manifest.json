@@ -1,0 +1,18 @@
+{
+  "id": "music",
+  "label": "Music",
+  "version": "1.0.0",
+  "author": "GlanceThing",
+  "description": "Now playing with seek, skip 10 seconds, shuffle, repeat and volume.",
+  "repository": "https://github.com/Pramodhsurya/GlanceThing-Apps",
+  "icon": "music_note",
+  "color": "#a855f7",
+  "platforms": [
+    "mac",
+    "windows",
+    "linux"
+  ],
+  "requiredVersions": {
+    "server": "1.0.0"
+  }
+}

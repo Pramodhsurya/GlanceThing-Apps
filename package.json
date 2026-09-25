@@ -1,0 +1,16 @@
+{
+  "name": "glancething-apps",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Official GlanceThing apps collection",
+  "homepage": "https://github.com/Pramodhsurya/GlanceThing-Apps#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pramodhsurya/GlanceThing-Apps.git"
+  },
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "package": "node scripts/package.mjs"
+  }
+}

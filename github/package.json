@@ -1,0 +1,6 @@
+{
+  "name": "@glancething/github",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Your repos, stars, pull requests and issues."
+}

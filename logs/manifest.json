@@ -1,0 +1,18 @@
+{
+  "id": "logs",
+  "label": "Console Logs",
+  "version": "1.0.0",
+  "author": "GlanceThing",
+  "description": "Live GlanceThing logs.",
+  "repository": "https://github.com/Pramodhsurya/GlanceThing-Apps",
+  "icon": "list_alt",
+  "color": "#0ea5e9",
+  "platforms": [
+    "mac",
+    "windows",
+    "linux"
+  ],
+  "requiredVersions": {
+    "server": "1.0.0"
+  }
+}

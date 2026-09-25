@@ -1,0 +1,95 @@
+{
+  "name": "GlanceThing Apps",
+  "repository": "https://github.com/Pramodhsurya/GlanceThing-Apps",
+  "version": "1.0.0",
+  "apps": [
+    {
+      "id": "music",
+      "label": "Music",
+      "version": "1.0.0",
+      "author": "GlanceThing",
+      "description": "Now playing with seek, skip 10 seconds, shuffle, repeat and volume.",
+      "icon": "music_note",
+      "color": "#a855f7",
+      "path": "music",
+      "builtin": true
+    },
+    {
+      "id": "pomodoro",
+      "label": "Pomodoro",
+      "version": "1.0.0",
+      "author": "GlanceThing",
+      "description": "Focus timer with short and long breaks.",
+      "icon": "timer",
+      "color": "#ef4444",
+      "path": "pomodoro",
+      "builtin": true
+    },
+    {
+      "id": "system",
+      "label": "Resource Usage",
+      "version": "1.0.0",
+      "author": "GlanceThing",
+      "description": "CPU, memory and uptime of this computer.",
+      "icon": "memory",
+      "color": "#10b981",
+      "path": "system",
+      "builtin": true
+    },
+    {
+      "id": "recorder",
+      "label": "Recording Notes",
+      "version": "1.0.0",
+      "author": "GlanceThing",
+      "description": "Record voice notes with the Car Thing microphone.",
+      "icon": "mic",
+      "color": "#f43f5e",
+      "path": "recorder",
+      "builtin": true
+    },
+    {
+      "id": "github",
+      "label": "GitHub",
+      "version": "1.0.0",
+      "author": "GlanceThing",
+      "description": "Your repos, stars, pull requests and issues.",
+      "icon": "code",
+      "color": "#238636",
+      "path": "github",
+      "builtin": true
+    },
+    {
+      "id": "logs",
+      "label": "Console Logs",
+      "version": "1.0.0",
+      "author": "GlanceThing",
+      "description": "Live GlanceThing logs.",
+      "icon": "list_alt",
+      "color": "#0ea5e9",
+      "path": "logs",
+      "builtin": true
+    },
+    {
+      "id": "link",
+      "label": "Link",
+      "version": "1.0.0",
+      "author": "GlanceThing",
+      "description": "Shared tap board between connected Car Things.",
+      "icon": "link",
+      "color": "#6366f1",
+      "path": "link",
+      "builtin": true
+    },
+    {
+      "id": "exampleapp",
+      "label": "Example App",
+      "version": "1.0.0",
+      "author": "GlanceThing",
+      "description": "A template you can copy to make a new GlanceThing app.",
+      "icon": "widgets",
+      "color": "#f59e0b",
+      "path": "exampleapp",
+      "builtin": false
+    }
+  ]
+}

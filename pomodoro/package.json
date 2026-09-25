@@ -1,0 +1,6 @@
+{
+  "name": "@glancething/pomodoro",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Focus timer with short and long breaks."
+}

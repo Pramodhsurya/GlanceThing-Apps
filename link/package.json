@@ -1,0 +1,6 @@
+{
+  "name": "@glancething/link",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Shared tap board between connected Car Things."
+}
