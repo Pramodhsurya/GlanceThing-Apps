@@ -141,3 +141,7 @@ apps. **Pomodoro is the exception:** its timer is taken directly from
 
 Do not copy DeskThing sources wholesale. If you add an app whose code comes
 from another repo, name that repo in the app README and in this table.
+
+## License
+
+[MIT](LICENSE). This collection keeps the same license as [GlanceThing](https://github.com/BluDood/GlanceThing). Copyright (c) 2026 BluDood and Pramodhsurya.
