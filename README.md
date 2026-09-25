@@ -45,7 +45,9 @@ you can **Initialize** from **Apps → Add App**.
 | --- | --- |
 | <img src=".github/assets/s10-github.png?v=1" width="400" /> | <img src=".github/assets/s10-logs.png?v=1" width="400" /> |
 
-<img src=".github/assets/s10-link.png?v=1" width="400" />
+| Link | &nbsp; |
+| --- | --- |
+| <img src=".github/assets/s10-link.png?v=1" width="400" /> | &nbsp; |
 
 ## Install from this repo
 
