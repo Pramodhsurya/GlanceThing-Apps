@@ -1,0 +1,18 @@
+{
+  "id": "weather",
+  "label": "Weather",
+  "version": "1.0.0",
+  "author": "GlanceThing",
+  "description": "Fullscreen 10-day forecast from the tray, plus a weather widget for home pages.",
+  "repository": "https://github.com/Pramodhsurya/GlanceThing-Apps",
+  "icon": "wb_sunny",
+  "color": "#38bdf8",
+  "platforms": [
+    "mac",
+    "windows",
+    "linux"
+  ],
+  "requiredVersions": {
+    "server": "1.0.0"
+  }
+}

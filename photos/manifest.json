@@ -1,0 +1,18 @@
+{
+  "id": "photos",
+  "label": "Photos",
+  "version": "1.0.0",
+  "author": "GlanceThing",
+  "description": "Browse the photo album from the tray. Ships a photo widget for home pages.",
+  "repository": "https://github.com/Pramodhsurya/GlanceThing-Apps",
+  "icon": "photo_library",
+  "color": "#fb7185",
+  "platforms": [
+    "mac",
+    "windows",
+    "linux"
+  ],
+  "requiredVersions": {
+    "server": "1.0.0"
+  }
+}

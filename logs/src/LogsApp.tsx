@@ -1,4 +1,10 @@
-import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
+import {
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState
+} from 'react'
 
 import { useApps } from '@/contexts/AppsContext.tsx'
 import { useSocketMessage } from './shared.tsx'
@@ -17,13 +23,15 @@ interface LogLine {
 }
 
 const MAX_LINES = 500
-const LINE_RE = /^\[([^\]]+)\]\s+(DEBUG|INFO|WARN|ERROR)(?:\s+<([^>]+)>:)?\s?(.*)$/
+const LINE_RE =
+  /^\[([^\]]+)\]\s+(DEBUG|INFO|WARN|ERROR)(?:\s+<([^>]+)>:)?\s?(.*)$/
 
 let nextId = 0
 
 function parse(raw: string): LogLine {
   const m = raw.match(LINE_RE)
-  if (!m) return { id: nextId++, time: '', level: 'INFO', scope: '', text: raw }
+  if (!m)
+    return { id: nextId++, time: '', level: 'INFO', scope: '', text: raw }
   return {
     id: nextId++,
     time: m[1],
@@ -69,12 +77,18 @@ const LogsApp: React.FC = () => {
 
   const scopes = useMemo(() => {
     const counts = new Map<string, number>()
-    lines.forEach(l => l.scope && counts.set(l.scope, (counts.get(l.scope) ?? 0) + 1))
-    return [...counts.entries()].sort((a, b) => b[1] - a[1]).slice(0, 6).map(e => e[0])
+    lines.forEach(
+      l => l.scope && counts.set(l.scope, (counts.get(l.scope) ?? 0) + 1)
+    )
+    return [...counts.entries()]
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 6)
+      .map(e => e[0])
   }, [lines])
 
   const visible = lines.filter(l => {
-    if (filter === 'WARN' && l.level !== 'WARN' && l.level !== 'ERROR') return false
+    if (filter === 'WARN' && l.level !== 'WARN' && l.level !== 'ERROR')
+      return false
     if (filter === 'ERROR' && l.level !== 'ERROR') return false
     if (scope && l.scope !== scope) return false
     return true
@@ -106,7 +120,11 @@ const LogsApp: React.FC = () => {
   return (
     <div className={styles.shell}>
       <div className={styles.header}>
-        <button type="button" className={styles.iconBtn} onClick={closeApp}>
+        <button
+          type="button"
+          className={styles.iconBtn}
+          onClick={closeApp}
+        >
           <span className="material-icons">keyboard_arrow_down</span>
         </button>
         <div className={styles.title}>Console Logs</div>
@@ -158,7 +176,9 @@ const LogsApp: React.FC = () => {
             <div key={l.id} className={styles.line} data-level={l.level}>
               <span className={styles.time}>{l.time}</span>
               <span className={styles.level}>{l.level}</span>
-              {l.scope ? <span className={styles.scope}>{l.scope}</span> : null}
+              {l.scope ? (
+                <span className={styles.scope}>{l.scope}</span>
+              ) : null}
               <span className={styles.text}>{l.text}</span>
             </div>
           ))
@@ -166,7 +186,11 @@ const LogsApp: React.FC = () => {
       </div>
 
       {paused ? (
-        <button type="button" className={styles.follow} onClick={jumpToEnd}>
+        <button
+          type="button"
+          className={styles.follow}
+          onClick={jumpToEnd}
+        >
           <span className="material-icons">arrow_downward</span>
           Follow live
         </button>

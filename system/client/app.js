@@ -18,8 +18,11 @@ GT.connect(function (ws) {
   else if ('system' === 'recorder') ws.sendType('recorder', 'watch')
   else if ('system' === 'github') ws.sendType('github', 'overview')
   else if ('system' === 'link') ws.sendType('link', 'join')
+  else if ('system' === 'mic') ws.sendType('mic', 'watch')
+  else if ('system' === 'layout') ws.sendType('layout')
+  else if ('system' === 'screensaver') ws.sendType('screensaver', 'getAlbum')
   ws.listen(function (msg) {
-    if (msg.type !== 'system' && msg.type !== 'playback') return
+    if (msg.type !== 'system' && msg.type !== 'playback' && msg.type !== 'layout' && msg.type !== 'screensaver') return
     state.data = msg.data
     state.action = msg.action
     if (window.onAppMessage) window.onAppMessage(msg, ws)

@@ -1,0 +1,6 @@
+{
+  "name": "@glancething/weather",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Fullscreen 10-day forecast from the tray, plus a weather widget for home pages."
+}

@@ -1,0 +1,18 @@
+{
+  "id": "usage",
+  "label": "AI usage",
+  "version": "1.0.0",
+  "author": "GlanceThing",
+  "description": "Codex, Claude and Cursor limits and spend, with widgets you drop on a page.",
+  "repository": "https://github.com/Pramodhsurya/GlanceThing-Apps",
+  "icon": "data_usage",
+  "color": "#a78bfa",
+  "platforms": [
+    "mac",
+    "windows",
+    "linux"
+  ],
+  "requiredVersions": {
+    "server": "1.0.0"
+  }
+}

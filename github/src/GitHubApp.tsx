@@ -31,7 +31,12 @@ interface Item {
 }
 
 interface Overview {
-  user: { login: string; name: string | null; followers: number; publicRepos: number }
+  user: {
+    login: string
+    name: string | null
+    followers: number
+    publicRepos: number
+  }
   repos: Repo[]
   starred: Repo[]
   fetchedAt: number
@@ -71,17 +76,24 @@ function ago(iso: string) {
   if (s < 3600) return `${Math.floor(s / 60)}m ago`
   if (s < 86400) return `${Math.floor(s / 3600)}h ago`
   if (s < 86400 * 30) return `${Math.floor(s / 86400)}d ago`
-  return new Date(iso).toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' })
+  return new Date(iso).toLocaleDateString([], {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric'
+  })
 }
 
 function compact(n: number) {
-  return n >= 1000 ? `${(n / 1000).toFixed(n >= 10000 ? 0 : 1)}k` : String(n)
+  return n >= 1000
+    ? `${(n / 1000).toFixed(n >= 10000 ? 0 : 1)}k`
+    : String(n)
 }
 
 const ERRORS: Record<string, string> = {
   no_token:
     'Add a GitHub token in the GlanceThing desktop app (Settings → GitHub token), or sign in with the GitHub CLI (gh auth login).',
-  bad_token: 'GitHub rejected the saved token. Add a new one in the desktop app settings.'
+  bad_token:
+    'GitHub rejected the saved token. Add a new one in the desktop app settings.'
 }
 
 const GitHubApp: React.FC = () => {
@@ -96,23 +108,26 @@ const GitHubApp: React.FC = () => {
   const [state, setState] = useState<'open' | 'closed'>('open')
   const [detailError, setDetailError] = useState<string | null>(null)
 
-  const { ready, socket } = useSocketMessage<unknown>('github', (data, action) => {
-    if (action === 'overview') {
-      setOverview(data as Overview)
-      setError(null)
-      setLoading(false)
-    } else if (action === 'repo') {
-      setDetail(data as RepoDetail)
-      setDetailError(null)
-    } else if (action === 'error') {
-      const { scope, error } = data as { scope: string; error: string }
-      if (scope === 'repo') setDetailError(error)
-      else {
-        setError(error)
+  const { ready, socket } = useSocketMessage<unknown>(
+    'github',
+    (data, action) => {
+      if (action === 'overview') {
+        setOverview(data as Overview)
+        setError(null)
         setLoading(false)
+      } else if (action === 'repo') {
+        setDetail(data as RepoDetail)
+        setDetailError(null)
+      } else if (action === 'error') {
+        const { scope, error } = data as { scope: string; error: string }
+        if (scope === 'repo') setDetailError(error)
+        else {
+          setError(error)
+          setLoading(false)
+        }
       }
     }
-  })
+  )
 
   const send = useCallback(
     (action: string, data?: unknown) =>
@@ -141,8 +156,16 @@ const GitHubApp: React.FC = () => {
     send('overview', { refresh: true })
   }
 
-  const repos = overview ? (tab === 'repos' ? overview.repos : overview.starred) : []
-  const items = detail ? (detailTab === 'pulls' ? detail.pulls : detail.issues) : []
+  const repos = overview
+    ? tab === 'repos'
+      ? overview.repos
+      : overview.starred
+    : []
+  const items = detail
+    ? detailTab === 'pulls'
+      ? detail.pulls
+      : detail.issues
+    : []
 
   return (
     <div className={styles.shell}>
@@ -169,7 +192,9 @@ const GitHubApp: React.FC = () => {
         )}
         {overview && !repo ? (
           <div className={styles.avatar}>
-            {(overview.user.name ?? overview.user.login).slice(0, 1).toUpperCase()}
+            {(overview.user.name ?? overview.user.login)
+              .slice(0, 1)
+              .toUpperCase()}
           </div>
         ) : null}
         <button
@@ -195,33 +220,52 @@ const GitHubApp: React.FC = () => {
       ) : repo ? (
         <>
           <div className={styles.tabs}>
-            <button type="button" data-on={detailTab === 'pulls'} onClick={() => setDetailTab('pulls')}>
+            <button
+              type="button"
+              data-on={detailTab === 'pulls'}
+              onClick={() => setDetailTab('pulls')}
+            >
               <span className="material-icons">call_split</span>
               Pull requests
               {detail ? <em>{detail.pulls.length}</em> : null}
             </button>
-            <button type="button" data-on={detailTab === 'issues'} onClick={() => setDetailTab('issues')}>
+            <button
+              type="button"
+              data-on={detailTab === 'issues'}
+              onClick={() => setDetailTab('issues')}
+            >
               <span className="material-icons">error_outline</span>
               Issues
               {detail ? <em>{detail.issues.length}</em> : null}
             </button>
             <div className={styles.segment}>
-              <button type="button" data-on={state === 'open'} onClick={() => setState('open')}>
+              <button
+                type="button"
+                data-on={state === 'open'}
+                onClick={() => setState('open')}
+              >
                 Open
               </button>
-              <button type="button" data-on={state === 'closed'} onClick={() => setState('closed')}>
+              <button
+                type="button"
+                data-on={state === 'closed'}
+                onClick={() => setState('closed')}
+              >
                 Closed
               </button>
             </div>
           </div>
           <div className={styles.list}>
             {detailError ? (
-              <div className={styles.empty}>{ERRORS[detailError] ?? detailError}</div>
+              <div className={styles.empty}>
+                {ERRORS[detailError] ?? detailError}
+              </div>
             ) : !detail ? (
               <div className={styles.empty}>Loading…</div>
             ) : items.length === 0 ? (
               <div className={styles.empty}>
-                No {state} {detailTab === 'pulls' ? 'pull requests' : 'issues'}
+                No {state}{' '}
+                {detailTab === 'pulls' ? 'pull requests' : 'issues'}
               </div>
             ) : (
               items.map(item => (
@@ -229,7 +273,11 @@ const GitHubApp: React.FC = () => {
                   <span
                     className={`material-icons ${styles.itemIcon}`}
                     data-kind={
-                      item.merged ? 'merged' : item.draft ? 'draft' : item.state
+                      item.merged
+                        ? 'merged'
+                        : item.draft
+                          ? 'draft'
+                          : item.state
                     }
                   >
                     {detailTab === 'pulls'
@@ -243,7 +291,8 @@ const GitHubApp: React.FC = () => {
                   <div className={styles.itemMain}>
                     <div className={styles.itemTitle}>{item.title}</div>
                     <div className={styles.itemMeta}>
-                      #{item.number} · {item.author} · {ago(item.updatedAt)}
+                      #{item.number} · {item.author} ·{' '}
+                      {ago(item.updatedAt)}
                       {item.draft ? ' · draft' : ''}
                       {item.comments ? ` · ${item.comments} comments` : ''}
                     </div>
@@ -252,7 +301,10 @@ const GitHubApp: React.FC = () => {
                         {item.labels.slice(0, 4).map(l => (
                           <span
                             key={l.name}
-                            style={{ borderColor: `#${l.color}`, color: `#${l.color}` }}
+                            style={{
+                              borderColor: `#${l.color}`,
+                              color: `#${l.color}`
+                            }}
                           >
                             {l.name}
                           </span>
@@ -268,17 +320,27 @@ const GitHubApp: React.FC = () => {
       ) : (
         <>
           <div className={styles.tabs}>
-            <button type="button" data-on={tab === 'repos'} onClick={() => setTab('repos')}>
+            <button
+              type="button"
+              data-on={tab === 'repos'}
+              onClick={() => setTab('repos')}
+            >
               <span className="material-icons">book</span>
               Repositories
               <em>{overview.repos.length}</em>
             </button>
-            <button type="button" data-on={tab === 'starred'} onClick={() => setTab('starred')}>
+            <button
+              type="button"
+              data-on={tab === 'starred'}
+              onClick={() => setTab('starred')}
+            >
               <span className="material-icons">star_border</span>
               Starred
               <em>{overview.starred.length}</em>
             </button>
-            <div className={styles.updated}>Updated {ago(new Date(overview.fetchedAt).toISOString())}</div>
+            <div className={styles.updated}>
+              Updated {ago(new Date(overview.fetchedAt).toISOString())}
+            </div>
           </div>
           <div className={styles.list}>
             {repos.length === 0 ? (
@@ -300,14 +362,23 @@ const GitHubApp: React.FC = () => {
                       {tab === 'starred' ? `${r.owner}/` : ''}
                       <strong>{r.name}</strong>
                     </span>
-                    {r.private ? <span className={styles.badge}>Private</span> : null}
+                    {r.private ? (
+                      <span className={styles.badge}>Private</span>
+                    ) : null}
                     <span className="material-icons">chevron_right</span>
                   </div>
-                  {r.description ? <div className={styles.repoDesc}>{r.description}</div> : null}
+                  {r.description ? (
+                    <div className={styles.repoDesc}>{r.description}</div>
+                  ) : null}
                   <div className={styles.repoStats}>
                     {r.language ? (
                       <span>
-                        <i style={{ background: LANG_COLORS[r.language] ?? '#8b949e' }} />
+                        <i
+                          style={{
+                            background:
+                              LANG_COLORS[r.language] ?? '#8b949e'
+                          }}
+                        />
                         {r.language}
                       </span>
                     ) : null}

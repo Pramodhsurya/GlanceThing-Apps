@@ -1,0 +1,6 @@
+{
+  "name": "@glancething/mic",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Pick which mics to control. Tap to mute or unmute. Optional pop-up when a mic is in use."
+}

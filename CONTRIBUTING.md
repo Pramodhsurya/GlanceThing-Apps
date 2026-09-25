@@ -18,7 +18,8 @@ This repo is the home of official GlanceThing apps, similar to
 4. Target **Chrome 69** and an **800×480** screen. Avoid flexbox `gap`, `inset`,
    and `color-mix`.
 5. Do not use a reserved id: `music`, `pomodoro`, `system`, `logs`, `link`,
-   `recorder`, `github`, `spotify`, `gmp`, `local`.
+   `recorder`, `github`, `mic`, `weather`, `calendar`, `usage`, `photos`,
+   `spotify`, `gmp`, `local`.
 6. Run `npm run package` and install the zip from GlanceThing → **Apps**.
 
 The full standard is in the GlanceThing

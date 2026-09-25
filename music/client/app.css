@@ -223,6 +223,10 @@
   opacity: 0.3;
 }
 
+.volume[data-dialing='true'] .volumeFill {
+  background: #c084fc;
+}
+
 .empty {
   flex: 1;
   display: flex;
@@ -247,6 +251,12 @@
 .empty small {
   font-size: 14px;
   max-width: 420px;
+}
+
+.emptyVolume {
+  width: 70%;
+  max-width: 420px;
+  margin-top: 20px;
 }
 
 .emptyBtn {

@@ -1,0 +1,6 @@
+{
+  "name": "@glancething/photos",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Browse the photo album from the tray. Ships a photo widget for home pages."
+}

@@ -17,16 +17,26 @@ interface LinkState {
   clients: LinkClient[]
 }
 
-const COLORS = ['#38bdf8', '#f472b6', '#facc15', '#34d399', '#a78bfa', '#fb923c']
+const COLORS = [
+  '#38bdf8',
+  '#f472b6',
+  '#facc15',
+  '#34d399',
+  '#a78bfa',
+  '#fb923c'
+]
 
 const LinkApp: React.FC = () => {
   const { closeApp } = useApps()
   const [state, setState] = useState<LinkState>({ you: null, clients: [] })
   const [pulse, setPulse] = useState(0)
 
-  const { ready, socket } = useSocketMessage<LinkState>('link', (data, action) => {
-    if (action === 'state') setState(data)
-  })
+  const { ready, socket } = useSocketMessage<LinkState>(
+    'link',
+    (data, action) => {
+      if (action === 'state') setState(data)
+    }
+  )
 
   useEffect(() => {
     if (!ready || !socket) return
@@ -51,7 +61,11 @@ const LinkApp: React.FC = () => {
   return (
     <div className={styles.shell}>
       <div className={styles.header}>
-        <button type="button" className={styles.iconBtn} onClick={closeApp}>
+        <button
+          type="button"
+          className={styles.iconBtn}
+          onClick={closeApp}
+        >
           <span className="material-icons">keyboard_arrow_down</span>
         </button>
         <div className={styles.title}>Link</div>
@@ -72,7 +86,9 @@ const LinkApp: React.FC = () => {
           >
             <span key={pulse} className={styles.ripple} />
             <div className={styles.padScore}>{me?.score ?? 0}</div>
-            <div className={styles.padHint}>{me ? 'Tap!' : 'Joining…'}</div>
+            <div className={styles.padHint}>
+              {me ? 'Tap!' : 'Joining…'}
+            </div>
           </button>
           <div className={styles.swatches}>
             {COLORS.map(color => (
@@ -91,7 +107,11 @@ const LinkApp: React.FC = () => {
           <div className={styles.sectionLabel}>Linked devices</div>
           <div className={styles.board}>
             {ranked.map((c, i) => (
-              <div key={c.id} className={styles.row} data-me={c.id === state.you}>
+              <div
+                key={c.id}
+                className={styles.row}
+                data-me={c.id === state.you}
+              >
                 <div className={styles.rank}>{i + 1}</div>
                 <div className={styles.rowMain}>
                   <div className={styles.rowTop}>

@@ -1,0 +1,18 @@
+{
+  "id": "mic",
+  "label": "Mic",
+  "version": "1.0.0",
+  "author": "GlanceThing",
+  "description": "Pick which mics to control. Tap to mute or unmute. Optional pop-up when a mic is in use.",
+  "repository": "https://github.com/Pramodhsurya/GlanceThing-Apps",
+  "icon": "mic",
+  "color": "#22c55e",
+  "platforms": [
+    "mac",
+    "windows",
+    "linux"
+  ],
+  "requiredVersions": {
+    "server": "1.0.0"
+  }
+}

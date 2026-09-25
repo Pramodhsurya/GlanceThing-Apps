@@ -22,8 +22,15 @@ const BARS = 48
 function label(r: RecordingInfo) {
   const d = new Date(r.createdAt)
   return {
-    title: d.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }),
-    date: d.toLocaleDateString([], { weekday: 'short', month: 'short', day: 'numeric' })
+    title: d.toLocaleTimeString([], {
+      hour: 'numeric',
+      minute: '2-digit'
+    }),
+    date: d.toLocaleDateString([], {
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric'
+    })
   }
 }
 
@@ -38,29 +45,28 @@ const RecorderApp: React.FC = () => {
   const [confirmDelete, setConfirmDelete] = useState<string | null>(null)
   const [justSaved, setJustSaved] = useState<string | null>(null)
 
-  const { ready, socket } = useSocketMessage<RecorderMessage | RecordingInfo[]>(
-    'recorder',
-    (data, action) => {
-      if (action === 'list') return setList(data as RecordingInfo[])
-      const msg = data as RecorderMessage
-      if (msg.kind === 'state') {
-        setRecording(msg.recording)
-        setPending(false)
-        if (msg.recording) {
-          setError(null)
-          setElapsed(msg.startedAt ? Date.now() - msg.startedAt : 0)
-        } else setLevels(Array(BARS).fill(0))
-      } else if (msg.kind === 'level') {
-        setElapsed(msg.elapsedMs)
-        setLevels(l => [...l.slice(1), Math.min(1, msg.level * 4)])
-      } else if (msg.kind === 'saved') {
-        setJustSaved(msg.recording?.name ?? null)
-      } else if (msg.kind === 'error') {
-        setError(msg.message)
-        setPending(false)
-      }
+  const { ready, socket } = useSocketMessage<
+    RecorderMessage | RecordingInfo[]
+  >('recorder', (data, action) => {
+    if (action === 'list') return setList(data as RecordingInfo[])
+    const msg = data as RecorderMessage
+    if (msg.kind === 'state') {
+      setRecording(msg.recording)
+      setPending(false)
+      if (msg.recording) {
+        setError(null)
+        setElapsed(msg.startedAt ? Date.now() - msg.startedAt : 0)
+      } else setLevels(Array(BARS).fill(0))
+    } else if (msg.kind === 'level') {
+      setElapsed(msg.elapsedMs)
+      setLevels(l => [...l.slice(1), Math.min(1, msg.level * 4)])
+    } else if (msg.kind === 'saved') {
+      setJustSaved(msg.recording?.name ?? null)
+    } else if (msg.kind === 'error') {
+      setError(msg.message)
+      setPending(false)
     }
-  )
+  })
 
   useEffect(() => {
     if (!ready || !socket) return
@@ -94,7 +100,11 @@ const RecorderApp: React.FC = () => {
   return (
     <div className={styles.shell}>
       <div className={styles.header}>
-        <button type="button" className={styles.iconBtn} onClick={closeApp}>
+        <button
+          type="button"
+          className={styles.iconBtn}
+          onClick={closeApp}
+        >
           <span className="material-icons">keyboard_arrow_down</span>
         </button>
         <div className={styles.title}>Recording Notes</div>
@@ -111,10 +121,15 @@ const RecorderApp: React.FC = () => {
         <div className={styles.recorder} data-recording={recording}>
           <div className={styles.meter}>
             {levels.map((v, i) => (
-              <span key={i} style={{ height: `${Math.max(4, v * 100)}%` }} />
+              <span
+                key={i}
+                style={{ height: `${Math.max(4, v * 100)}%` }}
+              />
             ))}
           </div>
-          <div className={styles.elapsed}>{formatMs(recording ? elapsed : 0)}</div>
+          <div className={styles.elapsed}>
+            {formatMs(recording ? elapsed : 0)}
+          </div>
           <button
             type="button"
             className={styles.record}
@@ -140,7 +155,8 @@ const RecorderApp: React.FC = () => {
 
         <div className={styles.listWrap}>
           <div className={styles.sectionLabel}>
-            {list.length} {list.length === 1 ? 'note' : 'notes'} · play on your computer
+            {list.length} {list.length === 1 ? 'note' : 'notes'} · play on
+            your computer
           </div>
           <div className={styles.list}>
             {list.length === 0 ? (
@@ -174,7 +190,9 @@ const RecorderApp: React.FC = () => {
                       onClick={() => remove(r.name)}
                     >
                       <span className="material-icons">
-                        {confirmDelete === r.name ? 'delete_forever' : 'delete'}
+                        {confirmDelete === r.name
+                          ? 'delete_forever'
+                          : 'delete'}
                       </span>
                     </button>
                   </div>

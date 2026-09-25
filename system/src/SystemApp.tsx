@@ -46,11 +46,11 @@ function levelColor(percent: number) {
 
 const GAUGE = 2 * Math.PI * 52
 
-const Gauge: React.FC<{ label: string; percent: number; detail: string }> = ({
-  label,
-  percent,
-  detail
-}) => (
+const Gauge: React.FC<{
+  label: string
+  percent: number
+  detail: string
+}> = ({ label, percent, detail }) => (
   <div className={styles.gauge}>
     <svg viewBox="0 0 120 120">
       <circle cx="60" cy="60" r="52" className={styles.gaugeTrack} />
@@ -77,10 +77,13 @@ const SystemApp: React.FC = () => {
   const [info, setInfo] = useState<SystemInfo | null>(null)
   const [history, setHistory] = useState<number[]>([])
 
-  const { ready, socket } = useSocketMessage<SystemInfo>('system', data => {
-    setInfo(data)
-    setHistory(h => [...h, data.cpu.overall].slice(-HISTORY))
-  })
+  const { ready, socket } = useSocketMessage<SystemInfo>(
+    'system',
+    data => {
+      setInfo(data)
+      setHistory(h => [...h, data.cpu.overall].slice(-HISTORY))
+    }
+  )
 
   useEffect(() => {
     if (!ready || !socket) return
@@ -105,7 +108,11 @@ const SystemApp: React.FC = () => {
   return (
     <div className={styles.shell}>
       <div className={styles.header}>
-        <button type="button" className={styles.iconBtn} onClick={closeApp}>
+        <button
+          type="button"
+          className={styles.iconBtn}
+          onClick={closeApp}
+        >
           <span className="material-icons">keyboard_arrow_down</span>
         </button>
         <div className={styles.title}>Resource Usage</div>

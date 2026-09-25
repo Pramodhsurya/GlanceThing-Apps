@@ -80,7 +80,10 @@ function freshTimer(s: Settings): Timer {
   }
 }
 
-function nextPhase(t: Timer, s: Settings): Pick<Timer, 'mode' | 'session'> {
+function nextPhase(
+  t: Timer,
+  s: Settings
+): Pick<Timer, 'mode' | 'session'> {
   if (t.mode === 'focus')
     return {
       mode: t.session >= s.blocks - 1 ? 'long' : 'short',
@@ -150,12 +153,14 @@ const PomodoroApp: React.FC = () => {
     'gt.pomodoro.timer',
     freshTimer(DEFAULT_SETTINGS)
   )
-  const [now, setNow] = useState(Date.now())
+  const [now, setNow] = useState(0)
   const [flashKey, setFlashKey] = useState(0)
   const [showSettings, setShowSettings] = useState(false)
 
   useEffect(() => {
-    const id = setInterval(() => setNow(Date.now()), 250)
+    const tick = () => setNow(Date.now())
+    tick()
+    const id = setInterval(tick, 250)
     return () => clearInterval(id)
   }, [])
 
@@ -174,10 +179,18 @@ const PomodoroApp: React.FC = () => {
 
   function toggle() {
     const t = Date.now()
-    if (timer.mode === 'done') return setTimer(enter({ mode: 'focus', session: 0 }, settings, true, t))
+    if (timer.mode === 'done')
+      return setTimer(
+        enter({ mode: 'focus', session: 0 }, settings, true, t)
+      )
     if (timer.running)
-      setTimer({ ...timer, running: false, remainingMs: remainingOf(timer, t) })
-    else setTimer({ ...timer, running: true, endAt: t + timer.remainingMs })
+      setTimer({
+        ...timer,
+        running: false,
+        remainingMs: remainingOf(timer, t)
+      })
+    else
+      setTimer({ ...timer, running: true, endAt: t + timer.remainingMs })
   }
 
   function skip() {
@@ -212,9 +225,15 @@ const PomodoroApp: React.FC = () => {
       className={styles.shell}
       style={{ '--accent': accent } as React.CSSProperties}
     >
-      {flashKey > 0 ? <div key={flashKey} className={styles.flash} /> : null}
+      {flashKey > 0 ? (
+        <div key={flashKey} className={styles.flash} />
+      ) : null}
       <div className={styles.header}>
-        <button type="button" className={styles.iconBtn} onClick={closeApp}>
+        <button
+          type="button"
+          className={styles.iconBtn}
+          onClick={closeApp}
+        >
           <span className="material-icons">keyboard_arrow_down</span>
         </button>
         <div className={styles.title}>Pomodoro</div>
@@ -303,11 +322,15 @@ const PomodoroApp: React.FC = () => {
               />
             </svg>
             <div className={styles.ringInner}>
-              <span className="material-icons">{MODE_ICON[timer.mode]}</span>
+              <span className="material-icons">
+                {MODE_ICON[timer.mode]}
+              </span>
               <div className={styles.clock}>
                 {timer.mode === 'done' ? '🎉' : formatTime(remaining)}
               </div>
-              <div className={styles.modeLabel}>{MODE_LABEL[timer.mode]}</div>
+              <div className={styles.modeLabel}>
+                {MODE_LABEL[timer.mode]}
+              </div>
             </div>
           </div>
 

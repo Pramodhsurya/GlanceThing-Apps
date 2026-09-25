@@ -1,0 +1,18 @@
+{
+  "id": "calendar",
+  "label": "Calendar",
+  "version": "1.0.0",
+  "author": "GlanceThing",
+  "description": "Today and tomorrow from Teams, Mac, Slack, or Google Calendar. Ships a calendar widget for the layout.",
+  "repository": "https://github.com/Pramodhsurya/GlanceThing-Apps",
+  "icon": "calendar_today",
+  "color": "#f59e0b",
+  "platforms": [
+    "mac",
+    "windows",
+    "linux"
+  ],
+  "requiredVersions": {
+    "server": "1.0.0"
+  }
+}

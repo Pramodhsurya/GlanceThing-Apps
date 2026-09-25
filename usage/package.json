@@ -1,0 +1,6 @@
+{
+  "name": "@glancething/usage",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Codex, Claude and Cursor limits and spend, with widgets you drop on a page."
+}

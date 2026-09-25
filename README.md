@@ -21,6 +21,10 @@ Inspired by [ItsRiprod/Deskthing-Apps](https://github.com/ItsRiprod/Deskthing-Ap
 | `logs`       | Console Logs    | Install from the Store                      | [Console Logs](https://github.com/ItsRiprod/Deskthing-Apps/tree/main/logs)                            |
 | `link`       | Link            | Install from the Store                      | [Link](https://github.com/ItsRiprod/Deskthing-Apps/tree/main/link)                                    |
 | `mic`        | Mic             | Install from the Store                      | —                                                                                                     |
+| `weather`    | Weather         | Tray app + 10-day forecast and weather widget | —                                                                                                     |
+| `calendar`   | Calendar        | Import Teams, Mac, Slack, or Google Calendar  | —                                                                                                     |
+| `usage`      | AI usage        | Limits, spend, and usage widgets              | —                                                                                                     |
+| `photos`     | Photos          | Tray app + photo widget                     | —                                                                                                     |
 | `exampleapp` | Example App     | Installable template for new community apps | —                                                                                                     |
 
 None of these are preinstalled. GlanceThing asks which ones to install on
@@ -49,6 +53,14 @@ from Git.
 | Link | Mic |
 | --- | --- |
 | <img src=".github/assets/s10-link.png?v=1" width="400" /> | <img src=".github/assets/s10-mic.png?v=1" width="400" /> |
+
+| Weather | Calendar |
+| --- | --- |
+| <img src=".github/assets/s10-weather.png?v=3" width="400" /> | <img src=".github/assets/s10-calendar.png?v=3" width="400" /> |
+
+| AI usage | Photos |
+| --- | --- |
+| <img src=".github/assets/s10-usage.png?v=3" width="400" /> | <img src=".github/assets/s10-photos.png?v=1" width="400" /> |
 
 ## Install from this repo
 
@@ -79,7 +91,8 @@ Prereqs: [Node.js](https://nodejs.org/).
    Release and add `you/your-repo`.
 
 Reserved ids: `music`, `pomodoro`, `system`, `logs`, `link`, `recorder`,
-`github`, `spotify`, `gmp`, `local`.
+`github`, `mic`, `weather`, `calendar`, `usage`, `photos`, `spotify`,
+`gmp`, `local`.
 
 ## What GlanceThing looks for
 

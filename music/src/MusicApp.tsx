@@ -95,7 +95,11 @@ const MusicApp: React.FC = () => {
     if (name === info?.current) return setPicking(false)
     setSwitching(name)
     socket.send(
-      JSON.stringify({ type: 'playback', action: 'source', data: { name } })
+      JSON.stringify({
+        type: 'playback',
+        action: 'source',
+        data: { name }
+      })
     )
   }
 
@@ -103,7 +107,8 @@ const MusicApp: React.FC = () => {
     !!playerData?.supportedActions.includes(action)
 
   useEffect(() => {
-    if (typeof playerData?.volume === 'number') setLocalVolume(playerData.volume)
+    if (typeof playerData?.volume === 'number')
+      setLocalVolume(playerData.volume)
   }, [playerData?.volume])
 
   volumeRef.current = localVolume
@@ -219,7 +224,11 @@ const MusicApp: React.FC = () => {
       ) : null}
 
       <div className={styles.header}>
-        <button type="button" className={styles.iconBtn} onClick={closeApp}>
+        <button
+          type="button"
+          className={styles.iconBtn}
+          onClick={closeApp}
+        >
           <span className="material-icons">keyboard_arrow_down</span>
         </button>
         <div className={styles.title}>Music</div>
@@ -246,12 +255,16 @@ const MusicApp: React.FC = () => {
 
           <div className={styles.panel}>
             <div className={styles.meta}>
-              <div className={styles.trackName}>{playerData.track.name}</div>
+              <div className={styles.trackName}>
+                {playerData.track.name}
+              </div>
               <div className={styles.artist}>
                 {playerData.track.artists.join(', ')}
               </div>
               {playerData.track.album ? (
-                <div className={styles.album}>{playerData.track.album}</div>
+                <div className={styles.album}>
+                  {playerData.track.album}
+                </div>
               ) : null}
             </div>
 
@@ -318,7 +331,9 @@ const MusicApp: React.FC = () => {
                 className={styles.toggle}
                 disabled={!can('repeat')}
                 data-on={playerData.repeat !== 'off'}
-                onClick={() => actions.repeat(REPEAT_NEXT[playerData.repeat])}
+                onClick={() =>
+                  actions.repeat(REPEAT_NEXT[playerData.repeat])
+                }
               >
                 <span className="material-icons">
                   {playerData.repeat === 'one' ? 'repeat_one' : 'repeat'}
@@ -350,41 +365,44 @@ const MusicApp: React.FC = () => {
       )}
 
       {picking ? (
-        <div className={styles.sheetScrim} onClick={() => setPicking(false)}>
+        <div
+          className={styles.sheetScrim}
+          onClick={() => setPicking(false)}
+        >
           <div className={styles.sheet} onClick={e => e.stopPropagation()}>
             <div className={styles.sheetTitle}>Play from</div>
             <div className={styles.sourceGrid}>
-            {(info?.sources ?? []).map(s => {
-              const meta = sourceMeta(s.name)
-              const active = info?.current === s.name
-              return (
-                <button
-                  key={s.name}
-                  type="button"
-                  className={styles.source}
-                  data-active={active}
-                  disabled={!s.ready || switching !== null}
-                  onClick={() => switchTo(s.name)}
-                >
-                  <span className="material-icons">{meta.icon}</span>
-                  <div className={styles.sourceText}>
-                    <div>{meta.label}</div>
-                    <small>
-                      {switching === s.name
-                        ? 'Switching…'
-                        : active
-                          ? 'In use'
-                          : s.ready
-                            ? 'Tap to use'
-                            : meta.unavailable}
-                    </small>
-                  </div>
-                  {active ? (
-                    <span className="material-icons">check_circle</span>
-                  ) : null}
-                </button>
-              )
-            })}
+              {(info?.sources ?? []).map(s => {
+                const meta = sourceMeta(s.name)
+                const active = info?.current === s.name
+                return (
+                  <button
+                    key={s.name}
+                    type="button"
+                    className={styles.source}
+                    data-active={active}
+                    disabled={!s.ready || switching !== null}
+                    onClick={() => switchTo(s.name)}
+                  >
+                    <span className="material-icons">{meta.icon}</span>
+                    <div className={styles.sourceText}>
+                      <div>{meta.label}</div>
+                      <small>
+                        {switching === s.name
+                          ? 'Switching…'
+                          : active
+                            ? 'In use'
+                            : s.ready
+                              ? 'Tap to use'
+                              : meta.unavailable}
+                      </small>
+                    </div>
+                    {active ? (
+                      <span className="material-icons">check_circle</span>
+                    ) : null}
+                  </button>
+                )
+              })}
             </div>
             {!info ? (
               <div className={styles.hint}>Loading sources…</div>

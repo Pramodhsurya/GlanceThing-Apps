@@ -1,0 +1,6 @@
+{
+  "name": "@glancething/calendar",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Today and tomorrow from Teams, Mac, Slack, or Google Calendar. Ships a calendar widget for the layout."
+}
