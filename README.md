@@ -116,6 +116,12 @@ Writes `dist/{id}-app-v{version}.zip` for each app folder that has a
 
 ## Credits
 
+This collection is inspired by the original [GlanceThing](https://github.com/BluDood/GlanceThing), created and maintained by **Drew Bled** ([@BluDood](https://github.com/BluDood)). Thank you, Drew, for building something this solid — I've been following it for a very long time.
+
+It also draws inspiration from [DeskThing](https://github.com/ItsRiprod/DeskThing) and [Deskthing-Apps](https://github.com/ItsRiprod/Deskthing-Apps) by [Riprod](https://github.com/ItsRiprod).
+
+What you see here is just my own vision on top of that work. It is not meant to replace or take away from those projects. GlanceThing and DeskThing stay their own things; I'll keep exploring these ideas in this fork.
+
 This collection is modeled on [ItsRiprod/Deskthing-Apps](https://github.com/ItsRiprod/Deskthing-Apps).
 Most GlanceThing apps were written for this project after studying those
 apps. **Pomodoro is the exception:** its timer is taken directly from
