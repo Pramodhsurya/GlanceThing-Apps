@@ -27,6 +27,26 @@ the zip from this repo will warn **Reserved App ID** so you cannot replace
 them. Use `exampleapp` (or a new folder with a new id) when you want something
 you can **Initialize** from **Apps → Add App**.
 
+## Screenshots
+
+| Desktop Apps tab | Car Thing tray |
+| --- | --- |
+| <img src=".github/assets/s10-apps-desktop.png?v=1" width="400" /> | <img src=".github/assets/s10-tray.png?v=1" width="400" /> |
+
+| Music | Pomodoro |
+| --- | --- |
+| <img src=".github/assets/s10-music.png?v=1" width="400" /> | <img src=".github/assets/s10-pomodoro.png?v=1" width="400" /> |
+
+| Resource Usage | Recording Notes |
+| --- | --- |
+| <img src=".github/assets/s10-system.png?v=1" width="400" /> | <img src=".github/assets/s10-recorder.png?v=1" width="400" /> |
+
+| GitHub | Console Logs |
+| --- | --- |
+| <img src=".github/assets/s10-github.png?v=1" width="400" /> | <img src=".github/assets/s10-logs.png?v=1" width="400" /> |
+
+<img src=".github/assets/s10-link.png?v=1" width="400" />
+
 ## Install from this repo
 
 1. Open GlanceThing → **Apps** → **Add App**.
