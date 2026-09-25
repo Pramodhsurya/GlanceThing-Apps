@@ -48,7 +48,7 @@ from Git.
 
 | GitHub | Console Logs |
 | --- | --- |
-| <img src=".github/assets/s10-github.png?v=1" width="400" /> | <img src=".github/assets/s10-logs.png?v=1" width="400" /> |
+| <img src=".github/assets/s10-github.png?v=1" width="400" /> | <img src=".github/assets/s10-logs.png?v=4" width="400" /> |
 
 | Link | Mic |
 | --- | --- |
@@ -56,11 +56,11 @@ from Git.
 
 | Weather | Calendar |
 | --- | --- |
-| <img src=".github/assets/s10-weather.png?v=3" width="400" /> | <img src=".github/assets/s10-calendar.png?v=3" width="400" /> |
+| <img src=".github/assets/s10-weather.png?v=4" width="400" /> | <img src=".github/assets/s10-calendar.png?v=4" width="400" /> |
 
 | AI usage | Photos |
 | --- | --- |
-| <img src=".github/assets/s10-usage.png?v=3" width="400" /> | <img src=".github/assets/s10-photos.png?v=1" width="400" /> |
+| <img src=".github/assets/s10-usage.png?v=4" width="400" /> | <img src=".github/assets/s10-photos.png?v=1" width="400" /> |
 
 ## Install from this repo
 
